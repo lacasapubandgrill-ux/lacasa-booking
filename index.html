@@ -1,92 +1,914 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Casa Pub & Grill | Booking & Events</title>
-  <style>
-    :root {
-      --primary: #d32f2f;
-      --dark: #121212;
-      --card-bg: #1e1e1e;
-      --text: #ffffff;
-      --subtext: #b0b0b0;
-      --accent: #f57c00;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: var(--dark); color: var(--text); line-height: 1.6; }
-    header { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; padding: 100px 20px; text-align: center; }
-    header h1 { font-size: 3rem; color: var(--accent); margin-bottom: 10px; }
-    header p { font-size: 1.2rem; color: var(--subtext); max-width: 600px; margin: 0 auto 20px; }
-    .btn { display: inline-block; background: var(--primary); color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
-    .btn:hover { background: #b71c1c; }
-    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-    .card { background: var(--card-bg); padding: 25px; border-radius: 8px; border-left: 4px solid var(--accent); }
-    .card h3 { margin-bottom: 10px; color: var(--accent); }
-    .booking-section { background: var(--card-bg); padding: 30px; border-radius: 8px; margin-top: 40px; }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; color: var(--subtext); }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #333; background: #2a2a2a; color: #fff; }
-    footer { text-align: center; padding: 20px; background: #0a0a0a; color: var(--subtext); font-size: 0.9rem; margin-top: 40px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Casa Pub & Grill — Venue Hire & Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E66700;
+            --primary-green: #167A39;
+            --dark-bg: #111827;
+            --card-bg: #1F2937;
+            --light-bg: #F9FAFB;
+            --text-dark: #1F2937;
+            --text-muted: #6B7280;
+            --text-light: #F9FAFB;
+            --accent-yellow: #F59E0B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo svg {
+            width: 55px;
+            height: 55px;
+        }
+
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title .main-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title .sub-name {
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .btn-header {
+            background-color: var(--primary-orange);
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            transition: background 0.2s !important;
+        }
+
+        .btn-header:hover {
+            background-color: #cf5c00 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.95)), 
+                        radial-gradient(circle at center, #1f2937 0%, #111827 100%);
+            color: var(--text-light);
+            padding: 4rem 1.5rem 5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-orange);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #D1D5DB;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #cf5c00;
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb857;
+            transform: translateY(-2px);
+        }
+
+        /* Venue Hire & Occasions Section */
+        .section {
+            padding: 4.5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+        }
+
+        .occasions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .occasion-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E5E7EB;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .occasion-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-orange);
+        }
+
+        .occasion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .occasion-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Booking Section */
+        .booking-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        .booking-header {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 1.8rem;
+            text-align: center;
+        }
+
+        .booking-header h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .booking-form {
+            padding: 2rem;
+        }
+
+        .form-type-toggle {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            max-width: 250px;
+            padding: 0.8rem;
+            border: 2px solid var(--primary-orange);
+            background: transparent;
+            color: var(--primary-orange);
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary-orange);
+        }
+
+        .policy-box {
+            background-color: #FFFBEB;
+            border-left: 4px solid var(--accent-yellow);
+            padding: 1.2rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .policy-box strong {
+            color: #B45309;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .policy-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .policy-list li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #78350F;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .copy-output-box {
+            display: none;
+            margin-top: 1.5rem;
+            background: #F3F4F6;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px dashed #9CA3AF;
+        }
+
+        .copy-output-box textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Drinks & Specials Section */
+        .drinks-section {
+            background-color: #ffffff;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .special-card {
+            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: relative;
+            border: 2px solid var(--accent-yellow);
+        }
+
+        .special-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent-yellow);
+            color: #111827;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .special-card h3 {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .special-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin: 0.5rem 0;
+        }
+
+        .special-desc {
+            font-size: 0.88rem;
+            color: #9CA3AF;
+        }
+
+        .menu-table-box {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #E5E7EB;
+            overflow: hidden;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background-color: #E5E7EB;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .item-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .item-price {
+            font-weight: 800;
+            color: var(--primary-green);
+            font-size: 1.05rem;
+        }
+
+        .deposit-notice {
+            margin-top: 1.5rem;
+            background: #ECFDF5;
+            border-left: 4px solid var(--primary-green);
+            padding: 1rem;
+            border-radius: 4px;
+            color: #065F46;
+            font-size: 0.9rem;
+        }
+
+        /* Location & Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #9CA3AF;
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>La Casa Pub & Grill</h1>
-    <p>Experience local vibes, great food, cold drinks, and unforgettable live entertainment.</p>
-    <a href="#booking" class="btn">Reserve a Table</a>
-  </header>
-
-  <div class="container">
-    <h2 style="text-align: center;">What We Offer</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Flame-Grilled Specialties</h3>
-        <p>Savor our grilled meats, burgers, and signature local dishes prepared daily.</p>
-      </div>
-      <div class="card">
-        <h3>Ice-Cold Refreshments</h3>
-        <p>A full bar stocked with local draft beers, spirits, and signature cocktails.</p>
-      </div>
-      <div class="card">
-        <h3>Live Events & Sports</h3>
-        <p>Watch big matches live on screen or join us for weekend DJ sets and entertainment.</p>
-      </div>
-    </div>
-
-    <div class="booking-section" id="booking">
-      <h2 style="margin-bottom: 20px;">Book a Table or Event Space</h2>
-      <form onsubmit="alert('Thank you! Your booking request has been submitted.'); return false;">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" required placeholder="Enter your full name">
+    <!-- Header / Nav -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <svg viewBox="0 0 500 500" width="55" height="55">
+                    <!-- Orange Triangle Frame -->
+                    <polygon points="40,430 250,50 460,430" fill="none" stroke="#E66700" stroke-width="36" stroke-linejoin="round" stroke-linecap="round"/>
+                    <line x1="20" y1="430" x2="480" y2="430" stroke="#E66700" stroke-width="36" stroke-linecap="round"/>
+                    <!-- Green Palm Branch at Top Peak -->
+                    <path d="M 250,50 Q 320,30 420,70 Q 350,110 250,50 Z" fill="#167A39"/>
+                    <path d="M 270,45 C 310,80 370,80 430,65 C 390,110 330,120 270,45 Z" fill="#167A39"/>
+                    <path d="M 290,40 Q 360,110 440,85 Q 360,140 280,50 Z" fill="#167A39"/>
+                    <!-- Bold Green 'C' -->
+                    <text x="250" y="330" font-family="'Montserrat', sans-serif" font-weight="900" font-size="240" fill="#167A39" text-anchor="middle">C</text>
+                    <!-- Green Script 'Pub & Grill' -->
+                    <text x="250" y="485" font-family="'Caveat', cursive, sans-serif" font-weight="700" font-size="55" fill="#167A39" text-anchor="middle">Pub &amp; Grill</text>
+                </svg>
+                <div class="brand-title">
+                    <span class="main-name">LA CASA</span>
+                    <span class="sub-name">Pub &amp; Grill</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#venue-hire">Venue Hire</a>
+                <a href="#booking">Book Now</a>
+                <a href="#menu">Drinks &amp; Specials</a>
+                <a href="#booking" class="btn-header">Reserve Space</a>
+            </nav>
         </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" required placeholder="Enter your phone number">
-        </div>
-        <div class="form-group">
-          <label>Date & Time</label>
-          <input type="datetime-local" required>
-        </div>
-        <div class="form-group">
-          <label>Number of Guests</label>
-          <select required>
-            <option value="2">2 People</option>
-            <option value="4">4 People</option>
-            <option value="6">6+ People (Group/Event)</option>
-          </select>
-        </div>
-        <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Submit Reservation Request</button>
-      </form>
-    </div>
-  </div>
+    </header>
 
-  <footer>
-    <p>&copy; La Casa Pub & Grill. All rights reserved.</p>
-  </footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Protea Glen, Soweto</span>
+            <h1>Good Food. Good Drinks. <span>Great Times.</span></h1>
+            <p>Host your special occasions at La Casa Pub and Grill or reserve your table for a vibrant day out. Cold beers, live music, and exceptional braai flavors await.</p>
+            <div class="hero-cta">
+                <a href="#booking" class="btn-primary">📅 Book Table / Venue</a>
+                <a href="https://wa.me/27848119597?text=Hi%20La%20Casa%2C%20I%20would%20like%20to%20inquire%20about%20a%20booking" target="_blank" class="btn-whatsapp">💬 WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Venue Hire & Occasions -->
+    <section id="venue-hire" class="section">
+        <div class="section-title">
+            <h2>Venue Hire For Special Occasions</h2>
+            <p>Make your next event unforgettable at La Casa Pub and Grill</p>
+        </div>
+
+        <div class="occasions-grid">
+            <div class="occasion-card">
+                <div class="occasion-icon">👔</div>
+                <h3>End of Year Functions</h3>
+            </div>
+            <div class="occasion-card">
+                <div class="occasion-icon">🎉</div>
+                <h3>Private Events &amp; Parties</h3>
+            </div>
+            <div class="occasion-card">
+                <div class="occasion-icon">🥩</div>
+                <h3>Braais &amp; Socials</h3>
+            </div>
+            <div class="occasion-card">
+                <div class="occasion-icon">🎂</div>
+                <h3>Birthday Celebrations</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="booking" class="section" style="padding-top: 0;">
+        <div class="booking-container">
+            <div class="booking-header">
+                <h3>Make A Booking Reservation</h3>
+                <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 4px;">Direct requests are sent to lacasapubandgrill@gmail.com</p>
+            </div>
+            
+            <div class="booking-form">
+                <div class="form-type-toggle">
+                    <button type="button" class="toggle-btn active" onclick="setBookingType('table')">🪑 Table Reservation</button>
+                    <button type="button" class="toggle-btn" onclick="setBookingType('venue')">🎪 Full Venue Hire</button>
+                </div>
+
+                <form id="resForm" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" id="booking_type" value="Table Reservation">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full_name">Full Name *</label>
+                            <input type="text" id="full_name" required placeholder="e.g. Thabo Molefe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required placeholder="e.g. 084 123 4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event_date">Date of Event / Visit *</label>
+                            <input type="date" id="event_date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guests">Number of Guests *</label>
+                            <input type="number" id="guests" min="1" required placeholder="e.g. 6">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="occasion">Occasion Type</label>
+                            <select id="occasion">
+                                <option value="Casual Visit / Drinks">Casual Visit / Drinks</option>
+                                <option value="Birthday Party">Birthday Party</option>
+                                <option value="End of Year Function">End of Year Function</option>
+                                <option value="Braai / Group Social">Braai / Group Social</option>
+                                <option value="Other Special Event">Other Special Event</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="notes">Special Requirements / Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Tell us about seating preferences, food arrangements, or specific requirements..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Booking Policy Notice -->
+                    <div class="policy-box">
+                        <strong>📌 Booking Policy Terms:</strong>
+                        <ul class="policy-list">
+                            <li>📅 <strong>Book Early:</strong> Secure date in advance</li>
+                            <li>🍽️ <strong>Confirm Details:</strong> Finalize menu &amp; setup</li>
+                            <li>✔️ <strong>Deposit Required:</strong> 50% deposit confirms venue hire</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">✉️ Submit Booking via Email</button>
+                        <button type="button" onclick="sendViaWhatsApp()" class="btn-whatsapp">💬 Submit via WhatsApp</button>
+                    </div>
+                </form>
+
+                <!-- Fallback Box if Email App doesn't trigger automatically -->
+                <div id="copyOutputBox" class="copy-output-box">
+                    <strong>Email content generated!</strong> If your email client didn't open automatically, copy the text below and email it to <strong>lacasapubandgrill@gmail.com</strong>:
+                    <textarea id="copyText" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drinks & Bucket Specials -->
+    <section id="menu" class="section drinks-section">
+        <div class="section-title">
+            <h2>Bucket Specials &amp; Drinks Menu</h2>
+            <p>Refreshing beverages served ice-cold at Protea Glen</p>
+        </div>
+
+        <h3 style="margin-bottom: 1rem; color: var(--text-dark);">🔥 Popular Bucket Specials</h3>
+        <div class="specials-grid">
+            <div class="special-card">
+                <span class="special-badge">BEST VALUE</span>
+                <h3>6 Corona (355ml)</h3>
+                <div class="special-price">R 120.00</div>
+                <p class="special-desc">6 Cold Corona 355ml bottles in an ice bucket</p>
+            </div>
+
+            <div class="special-card">
+                <span class="special-badge">COMBO</span>
+                <h3>6 Castle Lite + 6 Savanna</h3>
+                <div class="special-price">R 250.00</div>
+                <p class="special-desc">Ultimate party mix bucket (12 drinks total)</p>
+            </div>
+
+            <div class="special-card">
+                <span class="special-badge">POPULAR</span>
+                <h3>6 Savanna (330ml)</h3>
+                <div class="special-price">R 135.00</div>
+                <p class="special-desc">6 Dry Savanna 330ml bottles in an ice bucket</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 1rem; color: var(--text-dark);">🍺 Full Drinks Menu</h3>
+        <div class="menu-table-box">
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info"><h4>Savanna (330ml)</h4><p>Cider</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Savanna (500ml)</h4><p>Cider</p></div>
+                    <div class="item-price">R 32.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Bahama (500ml)</h4><p>Flavoured Cider</p></div>
+                    <div class="item-price">R 30.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Brutal Fruit (500ml)</h4><p>Flavoured Drink</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Bernini Mimosa</h4><p>Sparkling RTD</p></div>
+                    <div class="item-price">R 30.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Flying Fish (500ml)</h4><p>Flavoured Beer</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Flying Fish (660ml)</h4><p>Flavoured Beer</p></div>
+                    <div class="item-price">R 28.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Heineken (660ml)</h4><p>Premium Beer</p></div>
+                    <div class="item-price">R 32.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Corona (355ml)</h4><p>Premium Beer</p></div>
+                    <div class="item-price">R 24.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Carling Black Label (750ml)</h4><p>Quart Lager</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Castle Lager (750ml)</h4><p>Quart Lager</p></div>
+                    <div class="item-price">R 24.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Castle Lite (660ml)</h4><p>Quart Lager</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Amstel Lager (660ml)</h4><p>Quart Lager</p></div>
+                    <div class="item-price">R 25.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Hansa Pilsener (750ml)</h4><p>Quart Lager</p></div>
+                    <div class="item-price">R 24.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info"><h4>Coca-Cola (500ml Can)</h4><p>Soft Drink</p></div>
+                    <div class="item-price">R 15.00</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="deposit-notice">
+            <strong>🍾 Quart Bottle Exchange Policy:</strong> R3 extra charged per quart bottle taken off-premises without a return bottle. No extra bottle charges for sit-in customers.
+        </div>
+    </section>
+
+    <!-- Footer / Location -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>LA CASA PUB &amp; GRILL</h4>
+                <p>Protea Glen, Soweto</p>
+                <p>Your favorite local spot for good food, cold drinks, live sports, and venue hire celebrations.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Booking Inquiries</h4>
+                <p>📧 Email: lacasapubandgrill@gmail.com</p>
+                <p>📞 Call / WhatsApp: 084 811 9597</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Venue Hire Policy</h4>
+                <p>• Book early to secure date</p>
+                <p>• 50% deposit required for bookings</p>
+                <p>• Custom menu setups available</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 La Casa Pub and Grill. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Interactions -->
+    <script>
+        function setBookingType(type) {
+            const btns = document.querySelectorAll('.toggle-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            
+            if (type === 'table') {
+                btns[0].classList.add('active');
+                document.getElementById('booking_type').value = 'Table Reservation';
+            } else {
+                btns[1].classList.add('active');
+                document.getElementById('booking_type').value = 'Full Venue Hire';
+            }
+        }
+
+        function getFormValues() {
+            return {
+                type: document.getElementById('booking_type').value,
+                name: document.getElementById('full_name').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('event_date').value,
+                guests: document.getElementById('guests').value,
+                occasion: document.getElementById('occasion').value,
+                notes: document.getElementById('notes').value
+            };
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const val = getFormValues();
+            
+            const subject = encodeURIComponent(`New ${val.type} Inquiry - ${val.name}`);
+            const bodyText = `LA CASA PUB & GRILL BOOKING REQUEST\n` +
+                             `------------------------------------\n` +
+                             `Booking Type: ${val.type}\n` +
+                             `Full Name: ${val.name}\n` +
+                             `Phone Number: ${val.phone}\n` +
+                             `Event/Visit Date: ${val.date}\n` +
+                             `Number of Guests: ${val.guests}\n` +
+                             `Occasion: ${val.occasion}\n` +
+                             `Special Notes: ${val.notes || 'None'}\n` +
+                             `------------------------------------`;
+            
+            const mailtoUrl = `mailto:lacasapubandgrill@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+            
+            // Show fallback box with text
+            document.getElementById('copyOutputBox').style.display = 'block';
+            document.getElementById('copyText').value = bodyText;
+            
+            // Trigger mailto link
+            window.location.href = mailtoUrl;
+        }
+
+        function sendViaWhatsApp() {
+            const val = getFormValues();
+            if (!val.name || !val.phone || !val.date || !val.guests) {
+                alert('Please fill in your Name, Phone Number, Date, and Number of Guests first.');
+                return;
+            }
+
+            const message = `*LA CASA PUB & GRILL BOOKING REQUEST*\n` +
+                            `*Booking Type:* ${val.type}\n` +
+                            `*Name:* ${val.name}\n` +
+                            `*Phone:* ${val.phone}\n` +
+                            `*Date:* ${val.date}\n` +
+                            `*Guests:* ${val.guests}\n` +
+                            `*Occasion:* ${val.occasion}\n` +
+                            `*Notes:* ${val.notes || 'None'}`;
+
+            const waUrl = `https://wa.me/27848119597?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
