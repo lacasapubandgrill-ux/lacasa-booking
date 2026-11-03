@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Casa Pub & Grill | Booking & Events</title>
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --dark: #121212;
+      --card-bg: #1e1e1e;
+      --text: #ffffff;
+      --subtext: #b0b0b0;
+      --accent: #f57c00;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--dark); color: var(--text); line-height: 1.6; }
+    header { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; padding: 100px 20px; text-align: center; }
+    header h1 { font-size: 3rem; color: var(--accent); margin-bottom: 10px; }
+    header p { font-size: 1.2rem; color: var(--subtext); max-width: 600px; margin: 0 auto 20px; }
+    .btn { display: inline-block; background: var(--primary); color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+    .btn:hover { background: #b71c1c; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+    .card { background: var(--card-bg); padding: 25px; border-radius: 8px; border-left: 4px solid var(--accent); }
+    .card h3 { margin-bottom: 10px; color: var(--accent); }
+    .booking-section { background: var(--card-bg); padding: 30px; border-radius: 8px; margin-top: 40px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; color: var(--subtext); }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #333; background: #2a2a2a; color: #fff; }
+    footer { text-align: center; padding: 20px; background: #0a0a0a; color: var(--subtext); font-size: 0.9rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>La Casa Pub & Grill</h1>
+    <p>Experience local vibes, great food, cold drinks, and unforgettable live entertainment.</p>
+    <a href="#booking" class="btn">Reserve a Table</a>
+  </header>
+
+  <div class="container">
+    <h2 style="text-align: center;">What We Offer</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Flame-Grilled Specialties</h3>
+        <p>Savor our grilled meats, burgers, and signature local dishes prepared daily.</p>
+      </div>
+      <div class="card">
+        <h3>Ice-Cold Refreshments</h3>
+        <p>A full bar stocked with local draft beers, spirits, and signature cocktails.</p>
+      </div>
+      <div class="card">
+        <h3>Live Events & Sports</h3>
+        <p>Watch big matches live on screen or join us for weekend DJ sets and entertainment.</p>
+      </div>
+    </div>
+
+    <div class="booking-section" id="booking">
+      <h2 style="margin-bottom: 20px;">Book a Table or Event Space</h2>
+      <form onsubmit="alert('Thank you! Your booking request has been submitted.'); return false;">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" required placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" required placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label>Date & Time</label>
+          <input type="datetime-local" required>
+        </div>
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select required>
+            <option value="2">2 People</option>
+            <option value="4">4 People</option>
+            <option value="6">6+ People (Group/Event)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Submit Reservation Request</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; La Casa Pub & Grill. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
